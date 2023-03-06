@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 // Components
 import { Header, Footer, Form, Graph } from "./components";
 // Data
-import Parameters from "./../data/processed/parameters.json";
+import Parameters from "./data/processed/parameters.json";
+
 import { setTimeZone } from "./utils";
 
 function App() {
@@ -23,14 +24,14 @@ function App() {
     cantidad: [],
   });
 
-  const fetchData = async () => {
-    const response = await fetch(
-      `./data/${parameters.folder_to_save}/${submitObject.group_crime}.json`
-    );
-    const data = await response.json();
-    setData(data);
-    return data;
-  };
+  // const fetchData = async () => {
+  //   const response = await fetch(
+  //     `./data/${parameters.folder_to_save}/${submitObject.group_crime}.json`
+  //   );
+  //   const data = await response.json();
+  //   setData(data);
+  //   return data;
+  // };
 
   // using fetch on useEffect
   useEffect(() => {
@@ -40,7 +41,7 @@ function App() {
       // If startDate > endDate, set endDate to startDate
 
       const response = await fetch(
-        `./data/${parameters.folder_to_save}/${group_crime}.json`
+        `./src/data/${parameters.folder_to_save}/${group_crime}.json`
       );
       const data = await response.json();
 
