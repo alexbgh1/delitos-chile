@@ -1,0 +1,5 @@
+npm i
+npm -D tailwindcss postcss autoprefixer
+
+npm i --save chart.js react-chartjs-2
+npm install react-datepicker --save
