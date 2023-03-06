@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 // Components
 import { Header, Footer, Form, Graph } from "./components";
 // Data
-import Parameters from "./data/processed/parameters.json";
+import Parameters from "/src/data/processed/parameters.json";
 
 import { setTimeZone } from "./utils";
 
@@ -41,7 +41,7 @@ function App() {
       // If startDate > endDate, set endDate to startDate
 
       const response = await fetch(
-        `./src/data/${parameters.folder_to_save}/${group_crime}.json`
+        `/src/data/${parameters.folder_to_save}/${group_crime}.json`
       );
       const data = await response.json();
 
