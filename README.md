@@ -14,8 +14,8 @@ Práctica visualización delitos con React, datos extraídos de [cead spd](http:
 La información de utilidad (**.json**) se guardó en [otro repositorio](https://github.com/alexbgh1/delitos-chile-data) para hacer la solicitud de datos.
 
 ## Preview
-![Visitar página]()
-
+[Visitar página](https://alexbgh1.github.io/delitos-chile/)
+![Visitar página](https://i.imgur.com/pQJRZBt.png)
 ## Librería utilizada
 - React
 
