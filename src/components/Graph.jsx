@@ -57,7 +57,7 @@ const Graph = ({ data, data_values, submitObject }) => {
       y: {
         title: {
           display: true,
-          text: "Cantidad",
+          text: "Cantidad de delitos",
         },
       },
     },

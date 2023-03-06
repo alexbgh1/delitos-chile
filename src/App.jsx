@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 // Components
 import { Header, Footer, Form, Graph } from "./components";
 // Data
-import Parameters from "/src/data/processed/parameters.json";
+import Parameters from "/parameters.json";
 
 import { setTimeZone } from "./utils";
 
@@ -40,27 +40,33 @@ function App() {
       const { startDate, endDate, group_crime, crime } = submitObject;
       // If startDate > endDate, set endDate to startDate
 
-      const response = await fetch(
-        `/src/data/${parameters.folder_to_save}/${group_crime}.json`
-      );
-      const data = await response.json();
+      // url to fetch: https://alexbgh1.github.io/delitos-chile-data/data/{group_crime}.json
 
-      const filteredData = data.filter(
-        (item) =>
-          setTimeZone(new Date(item.fecha)) >= startDate &&
-          setTimeZone(new Date(item.fecha)) <= endDate
-      );
-
-      setData(filteredData);
-      setDataValues({
-        fecha: filteredData.map(
+      try {
+        const response = await fetch(
+          `https://alexbgh1.github.io/delitos-chile-data/data/${group_crime}.json`
+        );
+        const data = await response.json();
+        const filteredData = data.filter(
           (item) =>
-            setTimeZone(new Date(item.fecha)).getFullYear() +
-            "-" +
-            (setTimeZone(new Date(item.fecha)).getMonth() + 1)
-        ),
-        cantidad: filteredData.map((item) => item[crime]),
-      });
+            setTimeZone(new Date(item.fecha)) >= startDate &&
+            setTimeZone(new Date(item.fecha)) <= endDate
+        );
+
+        setData(filteredData);
+        setDataValues({
+          fecha: filteredData.map(
+            (item) =>
+              setTimeZone(new Date(item.fecha)).getFullYear() +
+              "-" +
+              (setTimeZone(new Date(item.fecha)).getMonth() + 1)
+          ),
+          cantidad: filteredData.map((item) => item[crime]),
+        });
+      } catch (error) {
+        console.log("Error on fetch data");
+        console.log(error);
+      }
     };
     // We cant use data.filter here because it's not updated yet, so instead we filter it in the fetchData function
     fetchData();

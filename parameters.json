@@ -1,0 +1,94 @@
+{
+    "file_name": "raw_data.xlsx",
+    "years": [
+        2005,
+        2006,
+        2007,
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+    ],
+    "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+    ],
+    "groups": {
+        "Delitos de mayor connotación social": [
+            "Delitos de mayor connotación social",
+            "Homicidios",
+            "Hurtos",
+            "Lesiones leves",
+            "Lesiones menos graves, graves o gravísimas",
+            "Otros robos con fuerza",
+            "Robo con violencia o intimidación",
+            "Robo de vehículo motorizado",
+            "Robo en lugar habitado",
+            "Robo en lugar no habitado",
+            "Robo por sorpresa",
+            "Violaciones"
+        ],
+        "Infracción a ley de armas": [
+            "Infracción a ley de armas",
+            "Abandono de armas",
+            "Hallazgo de armas o explosivos",
+            "Otros ley de armas",
+            "Porte de armas",
+            "Tenencia ilegal de armas o explosivos"
+        ],
+        "Incivilidades": [
+            "Incivilidades",
+            "Amenazas",
+            "Comercio ambulante o clandestino",
+            "Consumo alcohol vía pública",
+            "Daños",
+            "Desórdenes",
+            "Ebriedad",
+            "Otras incivilidades",
+            "Riña pública",
+            "Ruidos molestos"
+        ],
+        "Abigeato": [
+            "Abigeato"
+        ],
+        "Abusos sexuales y otros delitos sexuales": [
+            "Abusos sexuales y otros delitos sexuales"
+        ],
+        "Violencia intrafamiliar": [
+            "Violencia intrafamiliar",
+            "Violencia intrafamiliar a adulto mayor",
+            "Violencia intrafamiliar a hombre",
+            "Violencia intrafamiliar a mujer",
+            "Violencia intrafamiliar a niño",
+            "Violencia intrafamiliar no clasificado"
+        ],
+        "Receptación": [
+            "Receptación"
+        ],
+        "Robo frustrado": [
+            "Robo frustrado"
+        ]
+    },
+    "folder_to_save": "processed"
+}
