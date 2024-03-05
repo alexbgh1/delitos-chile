@@ -9,7 +9,6 @@ import { setTimeZone } from "./utils";
 
 function App() {
   const [parameters, setParameters] = useState(Parameters);
-  console.log(parameters);
   const [submitObject, setSubmitObject] = useState({
     startDate: new Date(`${Parameters.years[0]}/${Parameters.months[0]}`),
     endDate: new Date(`${Parameters.years.slice(-1)}/${Parameters.months.slice(-1)}`),
@@ -23,37 +22,33 @@ function App() {
     cantidad: [],
   });
 
-  // const fetchData = async () => {
-  //   const response = await fetch(
-  //     `./data/${parameters.folder_to_save}/${submitObject.group_crime}.json`
-  //   );
-  //   const data = await response.json();
-  //   setData(data);
-  //   return data;
-  // };
-
   // using fetch on useEffect
   useEffect(() => {
     const fetchData = async () => {
       // Validation just in case, destructuring
       const { startDate, endDate, group_crime, crime } = submitObject;
       // If startDate > endDate, set endDate to startDate
-
       // url to fetch: https://alexbgh1.github.io/delitos-chile-data/data/{group_crime}.json
 
       try {
         const response = await fetch(`https://alexbgh1.github.io/delitos-chile-data/data/${group_crime}.json`);
         const data = await response.json();
-        const filteredData = data.filter(
-          (item) => setTimeZone(new Date(item.fecha)) >= startDate && setTimeZone(new Date(item.fecha)) <= endDate
-        );
+        const filteredData = data.filter((item) => {
+          // Add arbitrary 2 days to endDate to include the last day (for ex: 2024-01-01 < 2024-01-03)
+          const newEndDate = new Date(endDate);
+          return (
+            setTimeZone(new Date(item.fecha)) >= startDate &&
+            setTimeZone(new Date(item.fecha)) <= newEndDate.setDate(newEndDate.getDate() + 2)
+          );
+        });
 
         setData(filteredData);
         setDataValues({
-          fecha: filteredData.map(
-            (item) =>
+          fecha: filteredData.map((item) => {
+            return (
               setTimeZone(new Date(item.fecha)).getFullYear() + "-" + (setTimeZone(new Date(item.fecha)).getMonth() + 1)
-          ),
+            );
+          }),
           cantidad: filteredData.map((item) => item[crime]),
         });
       } catch (error) {

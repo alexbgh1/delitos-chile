@@ -13,9 +13,9 @@ import { Line } from "react-chartjs-2";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const Graph = ({ data, data_values, submitObject }) => {
-  // Destruction
-  const { startDate, endDate, group_crime, crime } = submitObject;
+const Graph = ({ data_values, submitObject }) => {
+  // Destructering
+  const { group_crime, crime } = submitObject;
 
   const data_graph = {
     labels: data_values.fecha,
