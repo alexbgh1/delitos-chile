@@ -9,11 +9,10 @@ import { setTimeZone } from "./utils";
 
 function App() {
   const [parameters, setParameters] = useState(Parameters);
+  console.log(parameters);
   const [submitObject, setSubmitObject] = useState({
     startDate: new Date(`${Parameters.years[0]}/${Parameters.months[0]}`),
-    endDate: new Date(
-      `${Parameters.years.slice(-1)}/${Parameters.months.slice(-1)}`
-    ),
+    endDate: new Date(`${Parameters.years.slice(-1)}/${Parameters.months.slice(-1)}`),
     group_crime: Parameters.groups[Object.keys(Parameters.groups)[0]][0],
     crime: Parameters.groups[Object.keys(Parameters.groups)[0]][0],
   });
@@ -43,23 +42,17 @@ function App() {
       // url to fetch: https://alexbgh1.github.io/delitos-chile-data/data/{group_crime}.json
 
       try {
-        const response = await fetch(
-          `https://alexbgh1.github.io/delitos-chile-data/data/${group_crime}.json`
-        );
+        const response = await fetch(`https://alexbgh1.github.io/delitos-chile-data/data/${group_crime}.json`);
         const data = await response.json();
         const filteredData = data.filter(
-          (item) =>
-            setTimeZone(new Date(item.fecha)) >= startDate &&
-            setTimeZone(new Date(item.fecha)) <= endDate
+          (item) => setTimeZone(new Date(item.fecha)) >= startDate && setTimeZone(new Date(item.fecha)) <= endDate
         );
 
         setData(filteredData);
         setDataValues({
           fecha: filteredData.map(
             (item) =>
-              setTimeZone(new Date(item.fecha)).getFullYear() +
-              "-" +
-              (setTimeZone(new Date(item.fecha)).getMonth() + 1)
+              setTimeZone(new Date(item.fecha)).getFullYear() + "-" + (setTimeZone(new Date(item.fecha)).getMonth() + 1)
           ),
           cantidad: filteredData.map((item) => item[crime]),
         });
@@ -85,11 +78,7 @@ function App() {
             setData={setData}
             setDataValues={setDataValues}
           />
-          <Graph
-            data={data}
-            data_values={data_values}
-            submitObject={submitObject}
-          />
+          <Graph data={data} data_values={data_values} submitObject={submitObject} />
         </div>
       </div>
       <Footer />

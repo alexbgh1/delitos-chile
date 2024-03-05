@@ -3,7 +3,7 @@ const Header = () => {
     <header className="h-16 bg-indigo-800 text-indigo-50">
       <div className="flex flex-col justify-center h-full mx-8">
         <p className="text-center text-xl font-bold my-2 cursor-default">
-          Delitos en Chile [2005 - 2022] -{" "}
+          Delitos en Chile [2005 - 2023] -{" "}
           <a
             href="
             http://cead.spd.gov.cl/estadisticas-delictuales/"
