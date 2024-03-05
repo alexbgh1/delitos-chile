@@ -18,7 +18,8 @@
         2019,
         2020,
         2021,
-        2022
+        2022,
+        2023
     ],
     "months": [
         1,
@@ -43,6 +44,7 @@
             "Lesiones menos graves, graves o gravísimas",
             "Otros robos con fuerza",
             "Robo con violencia o intimidación",
+            "Robo de objetos de o desde vehículo",
             "Robo de vehículo motorizado",
             "Robo en lugar habitado",
             "Robo en lugar no habitado",
